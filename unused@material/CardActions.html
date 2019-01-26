@@ -1,0 +1,21 @@
+<div {...attrs}>
+    <slot></slot>
+</div>
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    computed: {
+        attrs (attributes) {
+            var result = Object.assign({}, attributes);
+            var cls ="mdc-card__actions";
+            var classes = [cls];
+            if (result.full) {
+                classes.push(cls+"--full-bleed");
+            }
+            delete result.full;
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

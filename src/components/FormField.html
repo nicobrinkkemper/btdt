@@ -1,0 +1,38 @@
+<div ref:formfield {...attrs}>
+  <slot></slot>
+  <label for="{id}">{label}</label>
+</div>
+<script>
+import {MDCFormField} from '@material/form-field/index';
+import {processClasses} from './helpers.js';
+export default {
+    oncreate() {
+        this.mdcComponent = new MDCFormField(this.refs.formfield);
+    },
+    ondestroy() {
+        this.mdcComponent.destroy();
+    },
+    methods: {
+        setField(component) {
+            this.mdcComponent.input = component.getMDCField();
+        }
+    },
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let cls ="mdc-form-field";
+            let classes = [cls];
+            let key = "align-end";
+            if (result[key]) {
+                classes.push(cls+"--"+key);
+            }
+            delete result[key];
+            for (let key of ["label", "id"]) {
+                delete result[key];
+            }
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+}
+</script>

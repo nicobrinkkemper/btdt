@@ -1,0 +1,24 @@
+<ul {...attrs}>
+  <slot></slot>
+</ul>
+
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let cls ="mdc-list";
+            let classes = [cls];
+            for (let key of ["two-line", "dense", "non-interactive", "avatar-list"]) {
+                if (result[key]) {
+                    classes.push(cls+"--"+key);
+                }
+                delete result[key];
+            }
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

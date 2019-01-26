@@ -1,0 +1,44 @@
+<button {...attrs}><slot></slot></button>
+<script>
+import {MDCIconButtonToggle} from '@material/icon-button';
+import {MDCRipple} from '@material/ripple/index';
+
+export default {
+	data() {
+		return {};
+	},
+    oncreate() {
+        this.mdcComponent = new MDCIconButtonToggle(this.refs.icon.getElement());
+        this.mdcComponent.listen("MDCIconButtonToggle:change", () => {
+			this.fire("change");
+		});
+		this.mdcComponentRipple = null;
+    },
+    ondestroy() {
+        this.mdcComponent.destroy();
+		if (this.mdcComponentRipple !== null) {
+			this.mdcComponentRipple.destroy();
+		}
+    },
+    onupdate({changed, current}) {
+        this.mdcComponent.refreshToggleData();
+        if (changed.ripple) {
+            if(current.ripple && this.mdcComponent === null) {
+                this.mdcComponentRipple = new MDCRipple(this.refs.button);
+				this.mdcComponentRipple.unbounded = true;
+            } else if (!current.ripple && this.mdcComponentRipple !== null) {
+                this.mdcComponentRipple.destroy();
+                this.mdcComponentRipple = null;
+            }
+        }
+    },
+	computed: {
+		attrs(attributes) {
+            let result = Object.assign({}, attributes);
+            let classes = ["mdc-icon-button", "material-icons"];
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+		}
+	}
+};
+</script>

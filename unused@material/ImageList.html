@@ -1,0 +1,22 @@
+<ul {...attrs}><slot></slot></ul>
+
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let cls = "mdc-image-list";
+            let classes = [cls];
+            for (let key of ["masonry", "with-text-protection"]) {
+                if (result[key]) {
+                    classes.push(cls+"--"+key);
+                }
+                delete result[key];
+            }
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

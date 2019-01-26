@@ -1,0 +1,25 @@
+<div {...attrs}>
+    <slot></slot>
+</div>
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    computed: {
+        attrs (attributes) {
+            var result = Object.assign({}, attributes);
+            var cls ="mdc-card__media";
+            var classes = [cls];
+            if (result.wide) {
+                classes.push(cls+"--16-9");
+            }
+            delete result.wide;
+            if (result.square) {
+                classes.push(cls+"--square");
+            }
+            delete result.square;
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

@@ -1,0 +1,72 @@
+<div {...attrs}>
+  <ul class="mdc-grid-list__tiles">
+      <slot></slot>
+  </ul>
+</div>
+
+<script>
+import {processClasses} from './helpers.js';
+import {MDCGridList} from '@material/grid-list'
+export default {
+    oncreate() {
+        this.mdcComponent = new MDCGridList(this.refs.dialog);
+    },
+    ondestroy() {
+        this.mdcComponent.destroy();
+    },
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let cls ="mdc-grid-list";
+            let classes = [cls];
+            switch (result.padding) {
+              case "1":
+              case 1:
+                classes.push(cls+"--tile-gutter-1");
+                break;
+              case "4":
+              case 4:
+                break;
+              default:
+                throw new Error("Padding has invalid value: detected '"+result.padding+"', should be 1 or 4");
+            }
+            delete result.padding;
+            switch (result["icon-align"]) {
+              case "start":
+              case "end":
+                classes.push(cls+"--with-icon-align-"+result["icon-align"]);
+                break;
+              default:
+                if (result["icon-align"]) {
+                  throw new Error("icon-align has invalid value: detected '"+result["icon-align"]+"', should be 'start' or 'end'");
+                }
+            }
+            delete result["icon-align"];
+            switch (result["tile-aspect"]) {
+              case "1x1":
+              case "16x9":
+              case "2x3":
+              case "3x2":
+              case "4x3":
+              case "3x4":
+                classes.push(cls+"--tile-aspect-"+result["tile-aspect"]);
+                break;
+              default:
+                if (result["tile-aspect"]) {
+                  throw new Error("tile-aspect has invalid value: detected '"+result["tile-aspect"]+"', should be '1x1', '16x9', '2x3', '3x2', '4x3' or '3x4'.");
+                }
+            }
+            delete result["tile-aspect"];
+
+            for (let key of ["header-caption", "twoline-caption"]) {
+                if (result[key]) {
+                    classes.push(cls+"--"+key);
+                }
+                delete result[key];
+            }
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

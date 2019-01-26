@@ -1,0 +1,16 @@
+<h3 {...attrs}><slot></slot></h3>
+
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let cls ="mdc-list-group__subheader";
+            let classes = [cls];
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

@@ -1,0 +1,78 @@
+@media only screen and (max-width: 340px) {
+  .full, .shadowBox  {
+    max-width: calc(100% - 4rem);
+  }
+  .form-item {
+    flex-flow:column!important;
+  }
+  .mdc-text-field.secondairy {
+    height:3rem!important;
+    margin-bottom:0!important;
+  }
+  .mdc-button.secondairy{
+    width:100%;
+    min-height:3rem;
+    margin-top:1rem;
+    margin-left:0!important;
+    margin-bottom:0!important;
+  }
+  .offsetBox,
+  .subscribeBox {
+    width: calc(100% - 2rem);
+    transform: translate3d(0rem, -1rem, 0px);
+  }
+}
+@media only screen and (min-width: 340px) and (max-width: 768px) {
+  .full, .shadowBox  {
+    max-width: calc(80% - 4rem);
+  }
+  .form-item {
+    flex-flow:column!important;
+  }
+  .mdc-text-field.secondairy {
+    height:3rem!important;
+    margin-bottom:0!important;
+  }
+  .mdc-button.secondairy{
+    width:80%;
+    min-height:3rem;
+    margin-top:1rem;
+    margin-left:0!important;
+    margin-bottom:0!important;
+  }
+  .offsetBox,
+  .subscribeBox {
+    width: calc(80% - 2rem);
+    transform: translate3d(0rem, -1rem, 0px);
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .full {
+    width: 40rem;
+  }
+  .offsetBox,
+  .subscribeBox {
+    width: 42.75rem;
+    transform: translate3d(-1.375rem, -2.1rem, 10px);
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1599px) {
+  .full {
+    width: 40rem;
+  }
+  .offsetBox,
+  .subscribeBox {
+    width: 42.75rem;
+    transform: translate3d(-1.375rem, -2.1rem, 10px);
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .full {
+    width: 40rem;
+  }
+  .offsetBox,
+  .subscribeBox {
+    width: 42.75rem;
+    transform: translate3d(-1.375rem, -2.1rem, 10px);
+  }
+}

@@ -1,0 +1,23 @@
+$container-fill-color: #285e9d  !default;
+$mdc-theme-primary: #3fa17e  !default;
+$mdc-theme-secondary: #285e9d  !default;
+$mdc-theme-background: #3fa17e  !default;
+$mdc-theme-on-primary: #f9f9f9  !default;
+$mdc-theme-on-secondary: #f9f9f9  !default;
+$mdc-theme--primary-bg: #3fa17e  !default;
+$mdc-theme--secondary-bg: #285e9d  !default;
+$mdc-shape-small-component-radius: 0  !default;
+$mdc-shape-medium-component-radius: 0  !default;
+$mdc-shape-large-component-radius: 0  !default;
+$mdc-typography-font-family: "avenirmedium", Roboto, -apple-system,
+  BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+  Helvetica Neue, sans-serif;
+$mdc-typography-styles-button: (
+  font-size: 1rem,
+  text-transform: none,
+  border-radius:0
+);
+$mdc-button-height: 5rem !default;
+$mdc-button-horizontal-padding: 1rem !default;
+$mdc-button-contained-horizontal-padding: 1rem !default;
+$mdc-dense-button-height: 4.1rem !default;

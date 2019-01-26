@@ -1,0 +1,24 @@
+<Icon on:click {...attrs}><slot></slot></Icon>
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    components: {
+        Icon: "./Icon.html"
+    },
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let cls = "mdc-top-app-bar__";
+            var classes = [];
+            for (let key of ["navigation-icon", "action-item"]) {
+                if (result[key] && classes.length === 0) {
+                    classes.push(cls+key);
+                }
+                delete result[key];
+            }
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

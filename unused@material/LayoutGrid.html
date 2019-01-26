@@ -1,0 +1,30 @@
+<div class="mdc-layout-grid">
+  <LayoutGridInner><slot></slot></LayoutGridInner>
+</div>
+
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    components: {
+        LayoutGridInner: './LayoutGridInner.html'
+    },
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let cls ="mdc-layout-grid";
+            let classes = [cls];
+            if (result.align) {
+                classes.push(cls+"--align-"+result.align);
+            }
+            delete result.align;
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    },
+    onstate({current}) {
+        if (current.align && ['top', 'middle', 'bottom'].includes(current.align)) {
+            throw new Error(`Invalid value for "align" attribute: "${current.align}", should be "top", "middle" or "bottom"`);
+        }
+    }
+};
+</script>

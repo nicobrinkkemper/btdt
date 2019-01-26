@@ -1,0 +1,30 @@
+<header ref:toolbar {...attrs}><slot></slot></header>
+
+<script>
+import {processClasses} from './helpers.js';
+import {MDCToolbar} from '@material/toolbar';
+
+export default {
+    oncreate() {
+        this.mdcComponent = new MDCToolbar(this.refs.toolbar);
+    },
+    ondestroy() {
+        this.mdcComponent.destroy();
+    },
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let cls ="mdc-toolbar";
+            let classes = [cls];
+            for (let key of ["fixed", "waterfall", "fixed-lastrow-only", "flexible", "flexible-default-behavior"]) {
+                if (result[key]) {
+                    classes.push(cls+"--"+key);
+                }
+                delete result[key];
+            }
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

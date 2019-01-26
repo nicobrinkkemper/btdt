@@ -1,0 +1,206 @@
+<svelte:head>
+	<title>Been There Done That</title>
+</svelte:head>
+<div class="row">
+	<h1 class="full">Been there done that</h1>
+</div>
+<div class="row jumbo">
+	<div class="full">
+		<h2>Make sure it’s done right</h2>
+		<div class="shadowBox">
+			<h3>A webapp for checklists.</h3>
+			<ul class="diamond">
+				<li>Create checklists for important tasks.</li>
+				<li>Assign checklists to others or yourself.</li>
+				<li>See progress and statistics in realtime.</li>
+			</ul>
+			<p>Use BTDT and make sure work get done right.</p>
+		</div>
+		<Button ripple raised class="tryButton">Try the app - It’s free</Button>
+		<p class="info">No signup required</p>
+	</div>
+</div>
+<div class="row">
+	<div class="full offsetBox">
+		<h2>A simple way to document, execute and improve processes within your company.</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="quote">
+		“50% of employees think their companies processes are poorly documented”
+	</div>
+</div>
+<div class="row">
+	<div class="quote">
+		“over 75% employees believe their managers have little to no insight in proper execution of processes”
+	</div>
+</div>
+<div class="row intro">
+	<div class="full subscribeBox">
+		<div>
+			<h2>Get notified when we launch!</h2>
+			<p>BTDT is in production. Enter your e-mail addres below to subscribe to our newsletter.</p>
+			<p class="form-item">
+				<TextField fullwidth id="email" name="email" placeholder="Your e-mail addres" class="secondairy" />
+				<Button ripple raised class="signUpButton secondairy">
+					Sign up for newsletter
+				</Button>
+			</p>
+			<div class="divider"></div>
+			<p><strong>Interested in early access?</strong></p>
+			<p>We’re looking for launching customers. You’ll have influence on the features we develope. In exchange we’ll ask for
+				feedback every now and then. Perhaps there will even be a launch party ;)</p>
+			<p class="form-item">
+				<TextField fullwidth name="email" placeholder="Your e-mail addres" class="secondairy" />
+				<Button ripple raised class="requestButton secondairy">
+					Request early access
+				</Button>
+			</p>
+		</div>
+	</div>
+</div>
+<style lang="scss">
+  @import "scss/_variables";
+
+  @import "@material/button/mixins";
+  @import "./_styles/styles";
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+  }
+  .jumbo {
+    background-image: linear-gradient(19deg, #285e9d, #6434d3);
+  }
+  .intro {
+    margin-top: 2rem;
+    background-image: linear-gradient(28deg, $mdc-theme-primary, #347dd3);
+  }
+  .offsetBox {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+    min-height: 6.75rem;
+    display: flex;
+    background: white;
+    justify-content: center;
+    align-content: center;
+  }
+  .offsetBox h2 {
+    padding-top: 3.4375rem;
+    // font-family: Avenir;
+    font-size: 1.4375rem;
+    color: #000000;
+    padding: 1.375rem;
+  }
+  .mdc-button,
+  .mdc-button.secondairy {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+    font-size: 0.75rem;
+    padding: 0 0.9375rem;
+    height: 2.3125rem;
+  }
+  .info {
+    margin-top: 1em;
+    padding-bottom: 5rem;
+    font-size: 0.625rem;
+    color: white;
+  }
+  .quote {
+    font-family: Arial;
+    padding: 1rem;
+    font-size: 16px;
+    font-style: italic;
+    color: #4a4a4a;
+    max-width: 33.5rem;
+  }
+  .subscribeBox {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+    padding-bottom: 2em;
+    background: white;
+    flex-flow: row;
+    h2 {
+      font-size: 1.4375rem;
+    }
+    p > strong {
+      padding-top: 3rem;
+      display: block;
+    }
+    > div,
+    > p,
+    > h2 {
+      padding: 3rem 1.375rem;
+    }
+  }
+  .shadowBox {
+    max-width: 100%;
+    width: 26.25rem;
+    min-height: 10.375rem;
+    background-color: #ffffff;
+    box-shadow: 0 0.165rem 0.25rem 0 rgba(0, 0, 0, 0.5);
+    padding-top: 1.0625rem;
+    padding-left: 1.3125rem;
+    margin: 2rem 0 1rem 0;
+  }
+  .shadowBox h3,
+  .shadowBox p {
+    color: #4a4a4a;
+    font-size: 0.75rem;
+    padding: 0;
+    margin: 0;
+  }
+  ul.diamond {
+    list-style: none;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    padding: 1.3rem 0 1.3rem 1rem;
+    margin: 0;
+  }
+  ul.diamond li {
+    position: relative;
+    padding: 0;
+    margin: 0;
+  }
+  ul.diamond li:after {
+    content: "";
+    height: 0.5em;
+    width: 0.5em;
+    background: $mdc-theme-primary;
+    display: block;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 0.575em;
+    left: -1em;
+  }
+  .intro {
+  }
+  .full {
+  }
+  h1 {
+    // font-family: Avenir;
+    font-size: 2.0625rem;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.73;
+    letter-spacing: normal;
+    color: #000000;
+  }
+  .jumbo h2 {
+    padding: 3.4375rem 0 0 0;
+    // font-family: Avenir;
+    font-size: 3rem;
+    line-height: 1.19;
+    color: #ffffff;
+    text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+  }
+</style>
+<script>
+  export default {
+    components: {
+      TextField: "../components/TextField.html",
+      Button: "../components/Button.html"
+      //   FormField: "../components/FormField.html"
+    },
+    oncreate() {}
+  };
+</script>

@@ -1,0 +1,38 @@
+<aside ref:drawer {...attrs}>
+  <nav class="mdc-drawer__drawer">
+    <slot></slot>
+  </nav>
+</aside>
+<script>
+import {MDCPersistentDrawer} from '@material/drawer';
+import {processClasses} from './helpers.js';
+export default {
+    oncreate() {
+        this.mdcComponent = new MDCPersistentDrawer(this.refs.drawer);
+        this.mdcComponent.listen("MDCPersistentDrawer:open", () => {
+            this.fire("open");
+            this.set({"open": true});
+        });
+        this.mdcComponent.listen("MDCPersistentDrawer:close", () => {
+            this.fire("close");
+            this.set({"open": false});
+        });
+    },
+    ondestroy() {
+        this.mdcComponent.destroy();
+    },
+    onupdate({current, changed}) {
+        if (changed.open && current.open !== this.mdcComponent.open) {
+            this.mdcComponent.open = current.open;
+        }
+    },
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let classes = ["mdc-drawer", "mdc-drawer--persistent"];
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+}
+</script>

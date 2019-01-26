@@ -1,0 +1,16 @@
+<nav ref:drawer {...attrs}>
+    <slot></slot>
+</nav>
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let classes = ["mdc-drawer", "mdc-drawer--permanent"];
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+}
+</script>

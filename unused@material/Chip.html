@@ -1,0 +1,52 @@
+<div ref:chip {...attrs}>
+    {#if icon && iconMode === "leading"}
+      <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">{icon}</i>
+    {/if}
+    {#if checkmark}
+    <div class="mdc-chip__checkmark">
+        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+          <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+        </svg>
+    </div>
+    {/if}
+    <slot></slot>
+    {#if icon && iconMode === "trailing"}
+      <i class="material-icons mdc-chip__icon  mdc-chip__icon--trailing" tabindex="0" role="button">{icon}</i>
+    {/if}
+</div>
+<script>
+import {processClasses} from './helpers.js';
+import {MDCChip} from '@material/chips';
+export default {
+    data() {
+        return {
+            "checkmark": false
+        }
+    },
+    oncreate() {
+        this.mdcComponent = new MDCChip(this.refs.chip);
+    },
+	ondestroy() {
+	    this.mdcComponent.destroy();
+	},
+    computed: {
+        attrs(computed) {
+            let result = Object.assign({}, computed);
+            let cls = "mdc-chip";
+            let classes = [cls];
+            for (let key of ["filter", "choice", "selected"]) {
+                if (result[key]) {
+                    classes.push(cls+"--"+key);
+                }
+                delete result[key];
+            }
+            for (let key of ["icon", "iconMode", "checkmark"]) {
+                delete result[key];
+            }
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+}
+</script>

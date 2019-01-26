@@ -1,0 +1,84 @@
+@import "variables";
+@import "fonts";
+@import "responsive";
+@import "normalize";
+@import "@material/theme/mdc-theme.scss";
+@import "@material/button/mdc-button.scss";
+@import "@material/textfield/mdc-text-field.scss";
+@import "@material/form-field/mdc-form-field.scss";
+@import "@material/ripple/mdc-ripple.scss";
+@import "@material/shape/mixins";
+@import "@material/shape/functions";
+.mdc-button{
+  padding:.5rem 1rem;
+  border-radius: 0;
+  height:inherit;
+  min-height:3rem;
+}
+.form-item {
+  display: flex;
+  align-content: space-between;
+  align-items: stretch;
+  flex-flow: row;
+  margin:1rem 0;
+}
+.mdc-button.secondairy {
+  @include mdc-button-filled-accessible($mdc-theme-secondary);
+  border-radius: 0;
+  min-width:15rem;
+  height:inherit;
+  margin-left:1rem;
+}
+.mdc-text-field.secondairy {
+  height:inherit;
+  @include mdc-text-field-fill-color(#d8d8d8);
+  @include mdc-text-field-caret-color($mdc-theme-secondary);
+  @include mdc-text-field-bottom-line-color($mdc-theme-secondary);
+  @include mdc-text-field-line-ripple-color($mdc-theme-secondary);
+}
+body {
+  margin: 0;
+  font-family: $mdc-typography-font-family;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background: #f9f9f9;
+}
+.mdc-button.secondairy {
+  background-color: $mdc-theme-secondary;
+  color: $mdc-theme-on-secondary;
+}
+@media only screen and (max-width: 340px) {
+  body,
+  html {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 340px) and (max-width: 768px) {
+  body,
+  html {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  body,
+  html {
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1599px) {
+  body,
+  html {
+    font-size: 18px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  body,
+  html {
+    font-size: 24px;
+  }
+}
+
+a {
+  color: inherit;
+}

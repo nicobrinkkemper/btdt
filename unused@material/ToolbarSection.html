@@ -1,0 +1,32 @@
+<section {...attrs}>
+    <slot></slot>
+</section>
+
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let cls ="mdc-toolbar__section";
+            let classes = [cls];
+            for (let key of ["align", "shrink-to-fit"]) {
+                if (result[key]) {
+                    if (key === "align") {
+                        let v = result[key]
+                        if (v === "start" || v === "end") {
+                            key += "-"+v;
+                        } else {
+                            continue;
+                        }
+                    }
+                    classes.push(cls+"--"+key);
+                }
+                delete result[key];
+            }
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

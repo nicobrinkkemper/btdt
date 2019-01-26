@@ -1,0 +1,18 @@
+<header {...attrs}>
+  <div class="mdc-drawer__header-content">
+    <slot></slot>
+  </div>
+</header>
+<script>
+import {processClasses} from './helpers.js';
+export default {
+    computed: {
+        attrs (attributes) {
+            let result = Object.assign({}, attributes);
+            let classes = ["mdc-drawer__header"];
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+};
+</script>

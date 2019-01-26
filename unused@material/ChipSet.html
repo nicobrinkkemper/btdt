@@ -1,0 +1,33 @@
+<div ref:chipset {...attrs}>
+  <slot></slot>
+</div>
+<script>
+import {MDCChipSet} from '@material/chips';
+import {processClasses} from './helpers.js';
+export default {
+    data() {
+        return {}
+    },
+    oncreate() {
+        this.mdcComponent = new MDCChipSet(this.refs.chipset);
+    },
+	ondestroy() {
+	    this.mdcComponent.destroy();
+	},
+    computed: {
+        attrs(computed) {
+            let result = Object.assign({}, computed);
+            let cls = "mdc-chip-set";
+            let classes = [cls];
+            for (let key of ["filter", "choice", "input"]) {
+                if (result[key]) {
+                    classes.push(cls+"--"+key);
+                }
+                delete result[key];
+            }
+            result["class"] = processClasses(classes, result["class"]);
+            return result;
+        }
+    }
+}
+</script>
