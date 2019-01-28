@@ -14,48 +14,48 @@
 </button>
 {/if}
 <script>
-    import { processClasses } from "./helpers.js";
-    import { MDCRipple } from "@material/ripple/index";
+  import { processClasses } from "./helpers.js";
+  import { MDCRipple } from "@material/ripple/index";
 
-    export default {
-      components: {
-        Icon: "./Icon.html"
-      },
-      oncreate() {
-        this.mdcComponent = null;
-      },
-      ondestroy() {
-        if (this.mdcComponent !== null) {
+  export default {
+    components: {
+      Icon: "./Icon.html"
+    },
+    oncreate() {
+      this.mdcComponent = null;
+    },
+    ondestroy() {
+      if (this.mdcComponent !== null) {
+        this.mdcComponent.destroy();
+      }
+    },
+    onupdate({ changed, current }) {
+      if (changed.ripple) {
+        if (current.ripple && this.mdcComponent === null) {
+          this.mdcComponent = new MDCRipple(this.refs.button);
+        } else if (!current.ripple && this.mdcComponent !== null) {
           this.mdcComponent.destroy();
-        }
-      },
-      onupdate({ changed, current }) {
-        if (changed.ripple) {
-          if (current.ripple && this.mdcComponent === null) {
-            this.mdcComponent = new MDCRipple(this.refs.button);
-          } else if (!current.ripple && this.mdcComponent !== null) {
-            this.mdcComponent.destroy();
-            this.mdcComponent = null;
-          }
-        }
-      },
-      computed: {
-        attrs(attributes) {
-          let result = Object.assign({}, attributes);
-          let cls = "mdc-button";
-          let classes = [cls];
-          for (let key of ["dense", "raised", "unelevated", "outlined"]) {
-            if (result[key]) {
-              classes.push(cls + "--" + key);
-            }
-            delete result[key];
-          }
-          for (let key of ["ripple", "icon", "href"]) {
-            delete result[key];
-          }
-          result["class"] = processClasses(classes, result["class"]);
-          return result;
+          this.mdcComponent = null;
         }
       }
-    };
+    },
+    computed: {
+      attrs(attributes) {
+        let result = Object.assign({}, attributes);
+        let cls = "mdc-button";
+        let classes = [cls];
+        for (let key of ["dense", "raised", "unelevated", "outlined"]) {
+          if (result[key]) {
+            classes.push(cls + "--" + key);
+          }
+          delete result[key];
+        }
+        for (let key of ["ripple", "icon", "href"]) {
+          delete result[key];
+        }
+        result["class"] = processClasses(classes, result["class"]);
+        return result;
+      }
+    }
+  };
 </script>

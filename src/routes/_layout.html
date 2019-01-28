@@ -1,14 +1,14 @@
 <main>
 	<svelte:component this={child.component} {...child.props}/>
 </main>
-<Nav segment={child.segment}/>
+
 <style>
 </style>
 
 <script>
   export default {
     components: {
-      Nav: "../components/Nav.html"
+   //   Nav: "../components/Nav.html" // <Nav segment={child.segment}/>
     }
   };
 </script>
